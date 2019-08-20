@@ -6,15 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import androidx.databinding.DataBindingUtil
+import android.databinding.DataBindingUtil
 import com.example.aboutme.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.view.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private  val myName:MyName = MyName("Peerapat Worapipat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -26,6 +23,7 @@ class MainActivity : AppCompatActivity() {
                 updateNickname(it)
             }
         }
+        this.myName = this@MainActivity.myName
     }
     private fun updateNickname (view: View) {
         binding.apply {
@@ -38,10 +36,11 @@ class MainActivity : AppCompatActivity() {
     }
     private fun addNickname (view: View) {
         binding.apply {
-            nicknameText.text = nicknameEdit.text
+            myName?.nickname = nicknameEdit.text.toString()
             nicknameEdit.visibility = View.GONE
             nicknameText.visibility = View.VISIBLE
             doneButton.visibility = View.GONE
+            invalidateAll()
             val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
         }
