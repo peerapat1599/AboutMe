@@ -10,12 +10,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
-import com.example.aboutm.databinding.ActivityMainBinding
+import com.example.aboutme.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.view.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private  val myName:MyName = MyName("Soradanai Srisumarl")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             nicknameText.setOnClickListener{
                 updateNickname(it)
             }
-            this.myName = this@MainActivity.myName
+
         }
     }
     private fun updateNickname (view: View) {
