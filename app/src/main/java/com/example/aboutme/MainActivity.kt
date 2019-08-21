@@ -6,12 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import com.example.aboutme.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private  val myName:MyName = MyName("Peerapat Worapipat")
+    private var myName:MyName = MyName("Peerapat Worapipat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
                 updateNickname(it)
             }
         }
-        this.myName = this@MainActivity.myName
+        binding.myName = this.myName
     }
     private fun updateNickname (view: View) {
         binding.apply {
